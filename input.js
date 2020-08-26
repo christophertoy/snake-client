@@ -6,7 +6,7 @@ const setupInput = function(conn) {
   stdin.setEncoding('utf8');
   stdin.resume();
 
-  stdin.on('data', (handleUserInput))
+  stdin.on('data', (handleUserInput));
 
   stdin.on('data', (data) => {
     if (data === "w") {
@@ -22,17 +22,18 @@ const setupInput = function(conn) {
     } else if (data === '=') {
       conn.write("Say: SSSSSSS");
     }
-  })
+  });
+
   return stdin;
+};
+
+const handleUserInput = function(data) {
+  if (data === '\u0003') {
+    process.exit();
   }
-
-  const handleUserInput = function(data) {
-    if (data === '\u0003') {
-      process.exit();
-    };
-  }
+};
 
 
-  module.exports = {
-    setupInput
-  };
+module.exports = {
+  setupInput
+};
