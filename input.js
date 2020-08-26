@@ -10,13 +10,17 @@ const setupInput = function(conn) {
 
   stdin.on('data', (data) => {
     if (data === "w") {
-      conn.write("Move: up")
+      conn.write("Move: up");
     } else if (data === "a") {
-      conn.write("Move: left")
+      conn.write("Move: left");
     } else if (data === "s") {
-      conn.write("Move: down")
+      conn.write("Move: down");
     } else if (data === 'd') {
       conn.write("Move: right");
+    } else if (data === '#') {
+      conn.write("Say: Hello WORLD!");
+    } else if (data === '=') {
+      conn.write("Say: SSSSSSS");
     }
   })
   return stdin;
